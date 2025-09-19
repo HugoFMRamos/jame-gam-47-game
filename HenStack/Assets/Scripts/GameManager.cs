@@ -1,12 +1,18 @@
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance { get; private set; }
+    public bool hasCubeLanded;
+    public float moveSpeed = 2f;
     public GameObject cubePrefab;
-    public Transform cubeSpawner;
+    public Transform cubeSpawnerTransform;
+    public Transform worldTransform;
     private GameObject nextCube;
+
 
     void Awake()
     {
@@ -18,13 +24,57 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    void Update()
+    {
+        if (hasCubeLanded)
+        {
+            MoveWorld();
+        }
+    }
+
     public void DeployNextCube()
     {
-        nextCube = Instantiate(cubePrefab, cubeSpawner.transform.position, Quaternion.identity);
+        hasCubeLanded = true;
+        nextCube = Instantiate(cubePrefab, cubeSpawnerTransform.transform.position, Quaternion.identity);
+        nextCube.transform.SetParent(cubeSpawnerTransform, true);
     }
 
     public StackingCube GetNextCube()
     {
         return nextCube.GetComponent<StackingCube>();
+    }
+
+    public void AddToWorld(GameObject gameObject)
+    {
+        gameObject.transform.SetParent(worldTransform, true);
+    }
+
+    public void MoveWorld()
+    {
+        foreach (Transform child in worldTransform)
+        {
+            StartCoroutine(MoveChildDown(child));
+        }
+
+        hasCubeLanded = false;
+    }
+
+    private IEnumerator MoveChildDown(Transform child)
+    {
+        if (child == null) yield break;
+
+        Vector3 startPos = child.position;
+        Vector3 endPos = new(startPos.x, Mathf.Round(startPos.y - 1f), startPos.z);
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            if (child == null) yield break;
+            t += Time.deltaTime * moveSpeed;
+            child.position = Vector3.Lerp(startPos, endPos, t);
+            yield return null;
+        }
+
+        child.position = endPos;
     }
 }

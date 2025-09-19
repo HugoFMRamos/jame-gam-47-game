@@ -1,3 +1,4 @@
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -5,6 +6,7 @@ public class StackingCube : MonoBehaviour
 {
     public bool isActive = true;
     public float gravityScale = 5f;
+    public LayerMask whatIsCube;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private PlayerInput _pi;
 
@@ -26,15 +28,30 @@ public class StackingCube : MonoBehaviour
 
     private void DropCube()
     {
-        if (isActive) _rb.gravityScale = gravityScale;
+        if (isActive)
+        {
+            gameObject.transform.SetParent(null, true);
+            _rb.gravityScale = gravityScale;
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if ((collision.gameObject.CompareTag("Starter") || collision.gameObject.CompareTag("StackingCube")) && !isActive)
+        {
+            _rb.velocity = Vector3.zero;
+            _rb.gravityScale = 0f;
+            _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if ((collision.gameObject.CompareTag("Starter") || collision.gameObject.CompareTag("StackingCube")) && isActive)
         {
             isActive = false;
             GameManager.Instance.DeployNextCube();
+            GameManager.Instance.AddToWorld(gameObject);
         }
     }
 }
