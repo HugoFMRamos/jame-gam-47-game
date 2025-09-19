@@ -7,10 +7,19 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
     public bool hasCubeLanded;
+    public int score = 0;
     public float moveSpeed = 2f;
+
+    [Header("CircularMovement")]
+    public float orbitSpeedIncrement = 0.1f;
+    public float orbitRadiusIncrement = 0.1f;
+    public float maxOrbitSpeed = 3.5f;
+
+    [Header("References")]
     public GameObject cubePrefab;
     public Transform cubeSpawnerTransform;
     public Transform worldTransform;
+    public CircularMovement orbit;
     private GameObject nextCube;
 
 
@@ -29,6 +38,16 @@ public class GameManager : MonoBehaviour
         if (hasCubeLanded)
         {
             MoveWorld();
+        }
+    }
+
+    public void IncrementScore()
+    {
+        score++;
+        if (score % 10 == 0 && score > 0 && orbit.speed < maxOrbitSpeed)
+        {
+            orbit.radius += orbitRadiusIncrement;
+            orbit.speed += orbitSpeedIncrement;
         }
     }
 

@@ -50,6 +50,7 @@ public class StackingCube : MonoBehaviour
         if ((collision.gameObject.CompareTag("Starter") || collision.gameObject.CompareTag("StackingCube")) && isActive)
         {
             isActive = false;
+            GameManager.Instance.IncrementScore();
             GameManager.Instance.DeployNextCube();
             GameManager.Instance.AddToWorld(gameObject);
         }

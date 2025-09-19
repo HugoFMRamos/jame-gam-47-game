@@ -667,10 +667,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasCubeLanded: 0
+  score: 0
   moveSpeed: 3
+  orbitSpeedIncrement: 0.1
+  orbitRadiusIncrement: 0.1
+  maxOrbitSpeed: 3.5
   cubePrefab: {fileID: 2994902555951545629, guid: 0dd24c2f05080e2439c03edb8b5bd2fe, type: 3}
   cubeSpawnerTransform: {fileID: 1663463616}
   worldTransform: {fileID: 775296811}
+  orbit: {fileID: 1663463617}
 --- !u!1 &1510989189
 GameObject:
   m_ObjectHideFlags: 0
