@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6468278092725195865}
   - component: {fileID: 7821669087692087076}
   - component: {fileID: 4643686334529465893}
+  - component: {fileID: 8673450151115606808}
   m_Layer: 3
-  m_Name: StackingCube
+  m_Name: Cube
   m_TagString: StackingCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,6 +173,19 @@ MonoBehaviour:
     m_Bits: 8
   _rb: {fileID: 7821669087692087076}
   _pi: {fileID: 0}
+--- !u!114 &8673450151115606808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994902555951545629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796b22b1ab9c620429a6bce5d6f1dfda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &4342515011902553526
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +258,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

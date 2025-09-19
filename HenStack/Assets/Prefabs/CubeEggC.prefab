@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 5022607400527288380}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3436578, y: 0.6550706, z: 0.07155024}
+  m_LocalPosition: {x: 0, y: 0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -150,7 +150,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18}
+  m_Offset: {x: 0, y: 0.09}
   serializedVersion: 2
   m_Radius: 0.12
 --- !u!114 &9139772407131218398
@@ -178,8 +178,9 @@ GameObject:
   - component: {fileID: 9156478430961304711}
   - component: {fileID: 3500538655095118557}
   - component: {fileID: 6794984633079683191}
+  - component: {fileID: -8595736035477562773}
   m_Layer: 3
-  m_Name: StackingCubeEgg
+  m_Name: CubeEggC
   m_TagString: StackingCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,6 +339,19 @@ MonoBehaviour:
     m_Bits: 8
   _rb: {fileID: 3500538655095118557}
   _pi: {fileID: 0}
+--- !u!114 &-8595736035477562773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268442454295826170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796b22b1ab9c620429a6bce5d6f1dfda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!1 &6497271184073634450
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 6497271184073634450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.45, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -410,7 +424,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.8489325, b: 0.6933962, a: 1}
   m_FlipX: 0
