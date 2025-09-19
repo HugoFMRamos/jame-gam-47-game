@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        Time.timeScale = 1f;
     }
 
     void Update()
@@ -56,11 +58,18 @@ public class GameManager : MonoBehaviour
     public void IncrementScore()
     {
         score++;
+        CanvasController.Instance.SetScoreText(score);
         if (score % 10 == 0 && score > 0 && orbit.speed < maxOrbitSpeed)
         {
             orbit.radius += orbitRadiusIncrement;
             orbit.speed += orbitSpeedIncrement;
         }
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        CanvasController.Instance.GameOver(score);
     }
 
     public void UpdateBalance(CubeData cube)

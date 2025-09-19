@@ -35,16 +35,6 @@ public class StackingCube : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if ((collision.gameObject.CompareTag("Starter") || collision.gameObject.CompareTag("StackingCube")) && !isActive)
-        {
-            _rb.velocity = Vector3.zero;
-            _rb.gravityScale = 0f;
-            _rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if ((collision.gameObject.CompareTag("Starter") || collision.gameObject.CompareTag("StackingCube")) && isActive)
@@ -53,6 +43,10 @@ public class StackingCube : MonoBehaviour
             GameManager.Instance.IncrementScore();
             GameManager.Instance.DeployNextCube();
             GameManager.Instance.AddToWorld(gameObject);
+
+            _rb.velocity = Vector3.zero;
+            _rb.gravityScale = 0f;
+            _rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 }
