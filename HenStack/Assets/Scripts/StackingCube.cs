@@ -6,6 +6,7 @@ public class StackingCube : MonoBehaviour
     public bool isActive = true;
     public float gravityScale = 5f;
     public LayerMask whatIsCube;
+    [SerializeField] private ParticleSystem _ps;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private PlayerInput _pi;
 
@@ -46,6 +47,7 @@ public class StackingCube : MonoBehaviour
             _rb.velocity = Vector3.zero;
             _rb.gravityScale = 0f;
             _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            _ps.Play();
         }
     }
 }
