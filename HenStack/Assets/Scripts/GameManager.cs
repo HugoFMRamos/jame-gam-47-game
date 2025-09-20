@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     public CircularMovement orbit;
     private GameObject nextCube;
     private GameObject prefabToSpawn;
+    private AudioSource _as;
+
+    [Header("Audio")]
+    public AudioClip[] clips;
+
 
     void Awake()
     {
@@ -40,6 +45,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         Time.timeScale = 1f;
+        _as = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -61,14 +67,16 @@ public class GameManager : MonoBehaviour
         CanvasController.Instance.SetScoreText(score);
         if (score % 10 == 0 && score > 0 && orbit.speed < maxOrbitSpeed)
         {
+            _as.PlayOneShot(clips[3], 1.0f);
             orbit.radius += orbitRadiusIncrement;
             orbit.speed += orbitSpeedIncrement;
         }
     }
 
-    public void GameOver()
+    public void GameOver(int clipToPlay)
     {
         Time.timeScale = 0f;
+        _as.PlayOneShot(clips[clipToPlay], 1.0f);
         CanvasController.Instance.GameOver(score);
     }
 

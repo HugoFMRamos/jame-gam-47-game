@@ -6,12 +6,14 @@ public class StackingCube : MonoBehaviour
     public bool isActive = true;
     public float gravityScale = 5f;
     public LayerMask whatIsCube;
+    [SerializeField] private AudioSource _as;
     [SerializeField] private ParticleSystem _ps;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private PlayerInput _pi;
 
     void Awake()
     {
+        if (_as == null) _as = GetComponent<AudioSource>();
         if (_rb == null) _rb = GetComponent<Rigidbody2D>();
         if (_pi == null) _pi = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
     }
@@ -48,6 +50,7 @@ public class StackingCube : MonoBehaviour
             _rb.gravityScale = 0f;
             _rb.constraints = RigidbodyConstraints2D.FreezeAll;
             _ps.Play();
+            _as.Play();
         }
     }
 }
