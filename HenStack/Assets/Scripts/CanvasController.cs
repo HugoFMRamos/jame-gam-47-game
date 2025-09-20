@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class CanvasController : MonoBehaviour
 {
@@ -45,6 +44,6 @@ public class CanvasController : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("MenuScreen!");
+        SceneManager.LoadScene("MenuScene");
     }
 }
