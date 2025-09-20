@@ -168,6 +168,9 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        child.position = endPos;
+        if (child != null)
+        {
+            child.position = endPos;
+        }
     }
 }
